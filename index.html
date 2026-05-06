@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dr. Márcio Costa Nogueira — Médico Pneumologista em Divinópolis, MG. CRM 18757. Especialista em saúde respiratória. Agende sua consulta." />
+  <title>Dr. Márcio Costa Nogueira | Pneumologista — Divinópolis MG</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,700;0,800;1,700;1,800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --primary-color   : #1B4F72;
+      --primary-light   : #2980B9;
+      --primary-dark    : #0D2E47;
+      --secondary-color : #F8F9FA;
+      --white           : #FFFFFF;
+      --text-dark       : #111E2B;
+      --text-mid        : #3D566E;
+      --text-muted      : #7A92A4;
+      --green           : #27AE60;
+      --green-dark      : #1E8449;
+      --teal            : #4DD6A3;
+      --gold            : #F0B429;
+      --font-title      : 'Poppins', sans-serif;
+      --font-body       : 'Poppins', sans-serif;
+      --nav-h           : 72px;
+      --radius          : 20px;
+      --radius-sm       : 12px;
+      --radius-lg       : 32px;
+      --shadow-sm       : 0 2px 12px rgba(27,79,114,.08);
+      --shadow-md       : 0 6px 32px rgba(27,79,114,.13);
+      --shadow-lg       : 0 16px 56px rgba(27,79,114,.20);
+      --ease            : .3s ease;
+    }
+
+    /* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─────────────────────────────────────────
+       FADE-IN (Intersection Observer)
+    ───────────────────────────────────────── */
+    .fi {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .fi.on   { opacity: 1; transform: none; }
+    .fi.d1   { transition-delay: .10s; }
+    .fi.d2   { transition-delay: .20s; }
+    .fi.d3   { transition-delay: .32s; }
+    .fi.d4   { transition-delay: .44s; }
+    .fi.d5   { transition-delay: .56s; }
+
+    /* ─────────────────────────────────────────
+       NAVBAR
+    ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      height: var(--nav-h);
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(27,79,114,.07);
+      z-index: 900;
+      transition: box-shadow var(--ease);
+    }
+    nav.lifted { box-shadow: var(--shadow-md); }
+
+    .nav-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; }
+    .nav-brand b {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -.01em;
+    }
+    .nav-brand small {
+      font-size: .68rem;
+      color: var(--text-muted);
+      letter-spacing: .05em;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 2px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .875rem;
+      color: var(--text-mid);
+      padding: 7px 13px;
+      border-radius: 9px;
+      transition: var(--ease);
+    }
+    .nav-links a:hover { color: var(--primary-color); background: rgba(27,79,114,.07); }
+    .nav-links .cta {
+      background: var(--green);
+      color: var(--white) !important;
+      font-weight: 700;
+      border-radius: 11px;
+      padding: 8px 18px;
+    }
+    .nav-links .cta:hover { background: var(--green-dark); }
+
+    /* hamburger */
+    .ham {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none;
+      padding: 8px; border-radius: 9px;
+      transition: var(--ease);
+    }
+    .ham:hover { background: rgba(27,79,114,.07); }
+    .ham span {
+      display: block; width: 24px; height: 2px;
+      background: var(--primary-color); border-radius: 2px;
+      transition: var(--ease);
+    }
+    .ham.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .ham.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* mobile drawer */
+    .mob-drawer {
+      position: fixed;
+      top: var(--nav-h); left: 0; width: 100%;
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+      z-index: 899;
+      max-height: 0; overflow: hidden;
+      transition: max-height .42s cubic-bezier(.4,0,.2,1);
+    }
+    .mob-drawer.open { max-height: 440px; }
+    .mob-drawer ul { list-style: none; padding: 14px 24px 28px; display: flex; flex-direction: column; gap: 4px; }
+    .mob-drawer a {
+      display: block; font-size: .95rem;
+      color: var(--text-mid); padding: 11px 16px;
+      border-radius: 11px; transition: var(--ease);
+    }
+    .mob-drawer a:hover { color: var(--primary-color); background: rgba(27,79,114,.06); }
+    .mob-drawer .mcta {
+      background: var(--green); color: var(--white) !important;
+      font-weight: 700; text-align: center;
+      margin-top: 10px; border-radius: 13px;
+    }
+    .mob-drawer .mcta:hover { background: var(--green-dark); }
+
+    /* ─────────────────────────────────────────
+       SECTION SCAFFOLD
+    ───────────────────────────────────────── */
+    section { padding: 108px 28px; }
+    .wrap { max-width: 1240px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--primary-light); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-title);
+      font-size: clamp(1.9rem,3.5vw,2.9rem);
+      font-weight: 700; color: var(--text-dark);
+      line-height: 1.2; margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-mid);
+      max-width: 580px; line-height: 1.78;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+      border-radius: 3px; margin: 18px 0 40px;
+    }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    #inicio {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      padding-top: var(--nav-h);
+      background-image: url('hero-bg.png');
+      background-size: cover;
+      background-position: center top;
+    }
+    /* ── Rajadas de vento estilo cartoon ── */
+    .wind-layer {
+      position: absolute; inset: 0;
+      z-index: 1; pointer-events: none;
+      overflow: hidden;
+    }
+    .wind-gust {
+      position: absolute;
+      opacity: 0;
+    }
+
+    @keyframes gustBlows {
+      0%   { transform: translateX(-280px); opacity: 0; }
+      12%  { opacity: 1; }
+      85%  { opacity: 0.85; }
+      100% { transform: translateX(110vw); opacity: 0; }
+    }
+
+    /* Posições e timings variados para cada rajada */
+    .g1 { top:  8%; animation: gustBlows  7s cubic-bezier(.4,0,.6,1) infinite 0s; }
+    .g2 { top: 22%; animation: gustBlows 10s cubic-bezier(.4,0,.6,1) infinite 2.8s; }
+    .g3 { top: 40%; animation: gustBlows  6s cubic-bezier(.4,0,.6,1) infinite 5.2s; }
+    .g4 { top: 55%; animation: gustBlows 12s cubic-bezier(.4,0,.6,1) infinite 1.4s; }
+    .g5 { top: 70%; animation: gustBlows  8s cubic-bezier(.4,0,.6,1) infinite 4s; }
+    .g6 { top: 84%; animation: gustBlows  9s cubic-bezier(.4,0,.6,1) infinite 7s; }
+
+    /* overlay */
+    #inicio::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(140deg,
+        rgba(10,28,48,.86) 0%,
+        rgba(13,46,71,.72) 55%,
+        rgba(27,79,114,.58) 100%);
+      z-index: 1;
+    }
+    /* bottom wave */
+    .hero-wave {
+      position: absolute; bottom: -1px; left: 0; width: 100%;
+      z-index: 3; pointer-events: none;
+    }
+
+    .hero-body {
+      position: relative; z-index: 2;
+      max-width: 1240px; margin: 0 auto;
+      padding: 80px 28px 100px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.92);
+      font-size: .73rem; font-weight: 700;
+      letter-spacing: .11em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 50px;
+      margin-bottom: 30px;
+    }
+    .pulse-dot {
+      width: 7px; height: 7px;
+      background: var(--teal); border-radius: 50%;
+      animation: pdot 2.4s ease-in-out infinite;
+    }
+    @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.28;transform:scale(.7)} }
+
+    /* ── Frase de impacto — Playfair Display itálico ── */
+    .hero-impact {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-style: italic;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      margin-bottom: 28px;
+    }
+    .hero-impact .accent { color: var(--teal); }
+
+    /* ── Nome do médico — subtítulo refinado ── */
+    .hero-title {
+      font-family: var(--font-title);
+      font-size: clamp(.9rem, 1.5vw, 1.05rem);
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .hero-crm {
+      font-size: .78rem; font-weight: 300;
+      color: rgba(255,255,255,.42);
+      letter-spacing: .08em; margin-bottom: 32px;
+    }
+    .hero-quote {
+      font-family: var(--font-body);
+      font-style: normal; font-weight: 300;
+      font-size: clamp(1rem,2vw,1.15rem);
+      color: rgba(255,255,255,.78);
+      max-width: 560px; line-height: 1.75;
+      border-top: 1px solid rgba(77,214,163,.4);
+      border-bottom: 1px solid rgba(77,214,163,.4);
+      padding: 16px 0;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; }
+
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: var(--white);
+      font-size: 1rem; font-weight: 700;
+      padding: 16px 34px; border-radius: var(--radius);
+      box-shadow: 0 8px 28px rgba(39,174,96,.42);
+      transition: var(--ease);
+    }
+    .btn-wa:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(39,174,96,.54);
+    }
+    .btn-wa svg { flex-shrink: 0; }
+
+    .rating-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(8px);
+      color: var(--white); font-size: .875rem;
+      padding: 14px 22px; border-radius: var(--radius);
+    }
+    .rating-stars { color: var(--gold); letter-spacing: 1px; }
+
+    /* ─────────────────────────────────────────
+       SOBRE
+    ───────────────────────────────────────── */
+    #sobre { background: var(--secondary-color); }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 64px; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-photo {
+      width: 100%; max-width: 400px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      margin: 0 auto;
+      display: block;
+    }
+    .about-placeholder {
+      width: 100%; max-width: 400px; aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #CDDDE9, #A6C4D8);
+      border-radius: var(--radius-lg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+      box-shadow: var(--shadow-md);
+      margin: 0 auto; position: relative; overflow: hidden;
+    }
+    .about-placeholder::before {
+      content: '';
+      position: absolute; top: -50px; right: -50px;
+      width: 180px; height: 180px;
+      border: 2px solid rgba(27,79,114,.1); border-radius: 50%;
+    }
+    .about-placeholder-icon {
+      width: 72px; height: 72px;
+      background: rgba(27,79,114,.14);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-placeholder p {
+      font-size: .8rem; color: var(--primary-color);
+      opacity: .6; text-align: center; padding: 0 24px;
+    }
+    /* floating badge */
+    .about-badge {
+      position: absolute; bottom: -20px; right: 8px;
+      background: var(--white); border-radius: var(--radius);
+      padding: 14px 20px;
+      box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 12px;
+      min-width: 200px;
+    }
+    .about-badge-icon {
+      width: 42px; height: 42px;
+      background: rgba(27,79,114,.09); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .about-badge b { display: block; font-size: .9rem; font-weight: 700; color: var(--primary-color); }
+    .about-badge small { font-size: .7rem; color: var(--text-muted); }
+
+    .about-text { display: flex; flex-direction: column; gap: 18px; }
+    .about-text p { font-size: 1.025rem; color: var(--text-mid); line-height: 1.82; }
+    .ph {
+      background: #DDE9F1; border-radius: 10px;
+      padding: 22px 24px;
+      border-left: 3px solid rgba(27,79,114,.28);
+      color: var(--text-muted) !important;
+      font-style: italic;
+    }
+
+    /* ─────────────────────────────────────────
+       ESPECIALIDADES
+    ───────────────────────────────────────── */
+    #especialidades {
+      background: linear-gradient(160deg, #EAF3FB 0%, #F5F9FC 45%, #EBF4F0 100%);
+    }
+
+    .spec-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 18px; margin-top: 52px;
+    }
+    .spec-card {
+      display: flex; align-items: flex-start; gap: 20px;
+      background: linear-gradient(135deg, #1A3A55 0%, #1E4A6E 60%, #215680 100%);
+      border: 1px solid rgba(41,128,185,.30);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.28), 0 0 0 0 rgba(41,128,185,0);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .spec-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(41,128,185,.07) 0%, transparent 60%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .spec-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(77,214,163,.55);
+      box-shadow: 0 8px 36px rgba(0,0,0,.38), 0 0 20px rgba(77,214,163,.18);
+    }
+    .spec-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: rgba(41,128,185,.18);
+      border: 1px solid rgba(41,128,185,.35);
+      border-radius: 15px;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--ease);
+    }
+    .spec-icon svg [stroke] { stroke: #4DD6A3 !important; }
+    .spec-icon svg [fill]:not([fill="none"]) { fill: rgba(77,214,163,.12) !important; }
+    .spec-card:hover .spec-icon {
+      background: rgba(77,214,163,.18);
+      border-color: rgba(77,214,163,.55);
+      box-shadow: 0 0 14px rgba(77,214,163,.25);
+    }
+    .spec-card:hover .spec-icon svg [stroke] { stroke: #4DD6A3 !important; }
+
+    .spec-text h3 {
+      font-family: var(--font-title);
+      font-size: 1.1rem; font-weight: 600;
+      color: #E8F4FB; margin-bottom: 5px;
+    }
+    .spec-text p { font-size: .9rem; color: rgba(180,210,230,.75); line-height: 1.65; }
+
+    /* ─────────────────────────────────────────
+       DIFERENCIAIS
+    ───────────────────────────────────────── */
+    #diferenciais {
+      background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+      position: relative; overflow: hidden;
+    }
+    #diferenciais::after {
+      content: '';
+      position: absolute; top: -160px; right: -160px;
+      width: 480px; height: 480px;
+      border: 1px solid rgba(255,255,255,.04); border-radius: 50%;
+      pointer-events: none;
+    }
+    #diferenciais .eyebrow { color: rgba(255,255,255,.5); }
+    #diferenciais .section-title { color: var(--white); }
+    #diferenciais .divider { background: linear-gradient(90deg, rgba(255,255,255,.45), transparent); }
+
+    /* ── Carrossel horizontal no mobile ── */
+    .dif-carousel-wrap { position: relative; margin-top: 52px; }
+
+    .dif-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 4px 16px;
+      scrollbar-width: none;
+    }
+    .dif-grid::-webkit-scrollbar { display: none; }
+    .dif-card {
+      flex: 0 0 72vw;
+      max-width: 300px;
+      scroll-snap-align: center;
+    }
+
+    /* Setas de navegação */
+    .dif-arrow {
+      display: flex;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(77,214,163,.35);
+      border-radius: 50%;
+      align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10;
+      transition: background var(--ease), border-color var(--ease);
+      backdrop-filter: blur(6px);
+    }
+    .dif-arrow:hover { background: rgba(77,214,163,.2); border-color: rgba(77,214,163,.7); }
+    .dif-arrow svg { flex-shrink: 0; }
+    .dif-arrow.prev { left: -4px; }
+    .dif-arrow.next { right: -4px; }
+
+    /* Dots indicadores */
+    .dif-dots {
+      display: flex; justify-content: center; gap: 7px;
+      margin-top: 18px;
+    }
+    .dif-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,.25);
+      transition: background .3s, transform .3s;
+      cursor: pointer;
+    }
+    .dif-dot.active {
+      background: rgba(77,214,163,.85);
+      transform: scale(1.3);
+    }
+
+    /* No desktop: grid normal, sem setas nem dots */
+    @media (min-width: 768px) {
+      .dif-carousel-wrap { margin-top: 52px; }
+      .dif-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding: 4px;
+        gap: 22px;
+      }
+      .dif-card { flex: unset; max-width: unset; }
+      .dif-arrow, .dif-dots { display: none; }
+    }
+    /* ── Borda neon sempre acesa ── */
+    @keyframes neonGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 4px  rgba(77,214,163,.25),
+          0 0 10px rgba(77,214,163,.15),
+          0 0 20px rgba(77,214,163,.08);
+        border-color: rgba(77,214,163,.45);
+      }
+      50% {
+        box-shadow:
+          0 0 6px  rgba(77,214,163,.40),
+          0 0 16px rgba(77,214,163,.22),
+          0 0 32px rgba(77,214,163,.12);
+        border-color: rgba(77,214,163,.65);
+      }
+    }
+
+    .dif-card {
+      border-radius: var(--radius);
+      padding: 44px 32px; text-align: center;
+      position: relative;
+      background: linear-gradient(145deg, #0f2d47, #153c5e);
+      border: 1.5px solid rgba(77,214,163,.45);
+      box-shadow:
+        0 0 4px  rgba(77,214,163,.25),
+        0 0 10px rgba(77,214,163,.15),
+        0 0 20px rgba(77,214,163,.08);
+      animation: neonGlow 2.4s ease-in-out infinite;
+      transition: transform var(--ease);
+    }
+    .dif-card:hover {
+      transform: translateY(-5px);
+    }
+    .dif-icon {
+      width: 68px; height: 68px;
+      background: rgba(255,255,255,.12); border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+    }
+    .dif-card h3 {
+      font-family: var(--font-title);
+      font-size: 1.28rem; font-weight: 600;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .dif-card p { font-size: .95rem; color: rgba(255,255,255,.68); line-height: 1.74; }
+
+    /* ─────────────────────────────────────────
+       CONTADORES
+    ───────────────────────────────────────── */
+    #contadores {
+      background: #07192A;
+      padding: 60px 28px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Bolinhas subindo ── */
+    .cnt-bubble {
+      position: absolute;
+      bottom: -40px;
+      border-radius: 50%;
+      background: rgba(77,214,163,.08);
+      border: 1px solid rgba(77,214,163,.22);
+      animation: bubbleRise linear infinite;
+      pointer-events: none;
+    }
+    @keyframes bubbleRise {
+      0%   { transform: translateY(0);   opacity: 0; }
+      12%  { opacity: 1; }
+      88%  { opacity: .7; }
+      100% { transform: translateY(-400px); opacity: 0; }
+    }
+    #diferenciais { padding-bottom: 60px; }
+
+    .cnt-eyebrow {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4ecdc4;
+      margin-bottom: 16px;
+    }
+
+    .cnt-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 48px;
+      font-family: var(--font-title);
+    }
+
+    .cnt-grid {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 0;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .cnt-divider {
+      width: 1px;
+      height: 80px;
+      background: rgba(255,255,255,.20);
+      align-self: flex-start;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .cnt-item {
+      padding: 0 60px;
+      text-align: center;
+    }
+
+    .cnt-number {
+      font-family: var(--font-title);
+      font-size: 64px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      display: block;
+    }
+
+    .cnt-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,.75);
+      margin-top: 12px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .cnt-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cnt-divider {
+        width: 80px;
+        height: 1px;
+        margin: 20px auto;
+      }
+      .cnt-item {
+        padding: 20px 0;
+      }
+      .cnt-number {
+        font-size: 48px;
+      }
+    }
+
+    /* ─────────────────────────────────────────
+       DEPOIMENTOS
+    ───────────────────────────────────────── */
+    #depoimentos {
+      background: var(--secondary-color);
+      padding: 52px 28px;
+    }
+    @media (min-width: 768px) {
+      #depoimentos { padding: 108px 28px; }
+    }
+    .test-header { text-align: center; margin-bottom: 52px; }
+    .test-header .divider { margin-inline: auto; }
+
+    /* ── Carrossel Depoimentos (mobile) ── */
+    .test-carousel-wrap { position: relative; }
+
+    .test-arrow {
+      display: flex;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px;
+      background: var(--white);
+      border: 1px solid rgba(27,79,114,.18);
+      border-radius: 50%;
+      align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10;
+      box-shadow: var(--shadow-sm);
+      transition: background var(--ease), border-color var(--ease);
+    }
+    .test-arrow:hover { background: var(--secondary-color); border-color: rgba(27,79,114,.35); }
+    .test-arrow.prev { left: -4px; }
+    .test-arrow.next { right: -4px; }
+
+    .test-dots {
+      display: flex; justify-content: center; gap: 7px;
+      margin-top: 20px;
+    }
+    .test-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(27,79,114,.2);
+      transition: background .3s, transform .3s;
+      cursor: pointer;
+    }
+    .test-dot.active {
+      background: var(--primary-color);
+      transform: scale(1.3);
+    }
+
+    @media (min-width: 768px) {
+      .test-arrow, .test-dots { display: none; }
+    }
+
+    /* Mobile: carrossel horizontal */
+    .test-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0 12px;
+      scrollbar-width: none;
+      /* centraliza o primeiro e último card */
+      scroll-padding-inline: calc(50% - 39vw);
+    }
+    .test-grid::-webkit-scrollbar { display: none; }
+    .test-card {
+      flex: 0 0 78vw;
+      max-width: 300px;
+      scroll-snap-align: center;
+      /* offset para centralizar visualmente */
+      scroll-margin-inline: calc(50% - 39vw);
+    }
+    /* Desktop: grid de 3 colunas */
+    @media (min-width: 768px) {
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        padding-bottom: 0;
+      }
+      .test-card {
+        flex: unset;
+        max-width: unset;
+      }
+    }
+    .test-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 32px 28px; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 18px;
+      border: 1.5px solid rgba(27,79,114,.06);
+      transition: var(--ease);
+    }
+    .test-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(27,79,114,.14);
+    }
+    .test-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
+    .test-quote {
+      font-family: var(--font-body);
+      font-style: normal; font-weight: 400;
+      font-size: clamp(.95rem,1.6vw,1.05rem);
+      color: var(--text-dark); line-height: 1.72;
+      flex: 1;
+    }
+    .test-author { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+    .test-avatar {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: linear-gradient(135deg, #A6C4D8, var(--primary-color));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-title); font-weight: 600;
+      font-size: 1.1rem; color: var(--white);
+    }
+    .test-name { font-weight: 700; color: var(--primary-color); font-size: .92rem; }
+    .test-via { font-size: .75rem; color: var(--text-muted); }
+    @media (min-width: 768px) {
+      .test-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ─────────────────────────────────────────
+       MOBILE CENTERING — Sobre / Especialidades / Diferenciais
+    ───────────────────────────────────────── */
+    @media (max-width: 767px) {
+      #sobre .eyebrow,
+      #especialidades .eyebrow,
+      #diferenciais .eyebrow,
+      #contato .eyebrow { display: block; text-align: center; }
+
+      #sobre .section-title,
+      #sobre .about-text p { text-align: center; }
+      #sobre .divider { margin-inline: auto; }
+
+      #especialidades .section-title,
+      #especialidades .section-sub { text-align: center; }
+      #especialidades .divider { margin-inline: auto; }
+
+      #diferenciais .section-title { text-align: center; }
+      #diferenciais .divider { margin-inline: auto; }
+    }
+
+    /* ─────────────────────────────────────────
+       CONTATO
+    ───────────────────────────────────────── */
+    #contato { background: linear-gradient(160deg, #EAF3FB 0%, #F0F6FA 50%, #E6F2F8 100%); }
+
+    @media (max-width: 767px) {
+      #contato .section-title,
+      #contato .section-sub { text-align: center; }
+      #contato .divider { margin-inline: auto; }
+      .c-row { justify-content: center; text-align: center; flex-direction: column; align-items: center; }
+      .c-label strong { text-align: center; }
+      .c-label span, .c-label a { text-align: center; display: block; }
+    }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 52px; margin-top: 52px;
+    }
+    .c-items { display: flex; flex-direction: column; gap: 16px; }
+    .c-row {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--secondary-color); border-radius: var(--radius);
+      padding: 18px 20px; transition: var(--ease);
+      border: 2px solid var(--primary-dark);
+    }
+    .c-row:hover { box-shadow: var(--shadow-sm); }
+    .c-ico {
+      width: 46px; height: 46px; flex-shrink: 0;
+      background: rgba(27,79,114,.09); border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .c-label strong {
+      display: block; font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 4px;
+    }
+    .c-label span, .c-label a {
+      font-size: 1rem; color: var(--text-dark);
+      transition: var(--ease);
+    }
+    .c-label a:hover { color: var(--primary-color); }
+
+    .btn-wa-block {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--green); color: var(--white);
+      font-size: 1rem; font-weight: 700;
+      padding: 18px 30px; border-radius: var(--radius);
+      box-shadow: 0 6px 22px rgba(39,174,96,.3);
+      transition: var(--ease); margin-top: 8px;
+    }
+    .btn-wa-block:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(39,174,96,.42);
+    }
+
+    .map-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 400px;
+      border: 3px solid var(--primary-dark);
+    }
+    .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background: #07192A;
+      padding: 68px 28px 44px;
+    }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 44px; margin-bottom: 52px;
+    }
+    .ft-brand-name {
+      font-family: var(--font-title);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white); margin-bottom: 5px;
+    }
+    .ft-crm { font-size: .72rem; color: rgba(255,255,255,.36); letter-spacing: .08em; margin-bottom: 14px; }
+    .ft-tagline {
+      font-size: .875rem; color: rgba(255,255,255,.46);
+      line-height: 1.74; max-width: 280px; margin-bottom: 20px;
+    }
+    .ft-social { display: flex; gap: 10px; }
+    .ft-soc {
+      width: 40px; height: 40px; border-radius: 11px;
+      background: rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.55); transition: var(--ease);
+    }
+    .ft-soc:hover { background: var(--primary-color); color: var(--white); transform: translateY(-2px); }
+
+    .ft-col h4 {
+      font-size: .7rem; font-weight: 700; letter-spacing: .13em;
+      text-transform: uppercase; color: rgba(255,255,255,.36);
+      margin-bottom: 16px;
+    }
+    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .ft-col a { font-size: .875rem; color: rgba(255,255,255,.54); transition: var(--ease); }
+    .ft-col a:hover { color: var(--white); }
+
+    .ft-bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 28px;
+      display: flex; flex-direction: column; gap: 6px;
+      align-items: center; text-align: center;
+    }
+    .ft-bottom p { font-size: .78rem; color: rgba(255,255,255,.28); }
+
+    /* ─────────────────────────────────────────
+       FLOATING WA
+    ───────────────────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 26px;
+      left: 50%; transform: translateX(-50%);
+      z-index: 800;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: var(--white);
+      font-size: .9rem; font-weight: 700;
+      padding: 14px 26px 14px 20px; border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(39,174,96,.52);
+      white-space: nowrap;
+      text-decoration: none;
+      transition: box-shadow .3s ease, filter .3s ease;
+      animation: wafloat .65s ease 1.4s both;
+    }
+    .wa-float:hover { filter: brightness(1.08); box-shadow: 0 16px 44px rgba(39,174,96,.64); }
+    .wa-label { display: block; }
+    @keyframes wafloat { from{opacity:0;transform:translateX(-50%) translateY(20px) scale(.88)} to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)} }
+
+    @media (min-width: 768px) {
+      .wa-float {
+        left: auto; right: 28px;
+        transform: none;
+        animation-name: wafloat-desk;
+      }
+      @keyframes wafloat-desk { from{opacity:0;transform:translateY(20px) scale(.88)} to{opacity:1;transform:none} }
+      .wa-float:hover { transform: translateY(-3px); }
+    }
+
+    /* ─────────────────────────────────────────
+       MODAL AGENDAMENTO
+    ───────────────────────────────────────── */
+    #modal-agendamento {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 1200;
+      background: rgba(7,25,42,.65);
+      backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #modal-agendamento.open { display: flex; animation: modalIn .25s ease; }
+    @keyframes modalIn { from{opacity:0;transform:scale(.94)} to{opacity:1;transform:scale(1)} }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 32px 32px;
+      width: 100%; max-width: 460px;
+      position: relative;
+      box-shadow: 0 24px 72px rgba(7,25,42,.28);
+    }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 18px;
+      background: none; border: none;
+      font-size: 1.6rem; line-height: 1;
+      color: var(--text-muted); cursor: pointer;
+      transition: color .2s;
+    }
+    .modal-close:hover { color: var(--text-dark); }
+
+    .modal-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .modal-header h2 {
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--primary-dark); margin: 0;
+    }
+    .modal-header p {
+      font-size: .82rem; color: var(--text-muted); margin: 4px 0 0;
+    }
+
+    .modal-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .modal-field label {
+      font-size: .8rem; font-weight: 600; color: var(--text-mid);
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    .modal-field label span { font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .modal-field input,
+    .modal-field textarea {
+      font-family: var(--font-body); font-size: .95rem;
+      color: var(--text-dark);
+      border: 1.5px solid #D0DCE8;
+      border-radius: 12px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: none;
+    }
+    .modal-field input:focus,
+    .modal-field textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(41,128,185,.12);
+    }
+    .modal-field input.err,
+    .modal-field textarea.err { border-color: #e74c3c; }
+
+    .modal-submit {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px;
+      background: var(--green); color: #fff;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 700;
+      border: none; border-radius: 14px; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(39,174,96,.35);
+      transition: filter .2s, transform .2s;
+      margin-top: 4px;
+    }
+    .modal-submit:hover { filter: brightness(1.07); transform: translateY(-2px); }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (min-width: 768px) {
+      .ham          { display: none; }
+      .nav-links    { display: flex; }
+      .about-grid   { grid-template-columns: 1fr 1.3fr; }
+      .spec-grid    { grid-template-columns: repeat(2,1fr); }
+      .dif-grid     { grid-template-columns: repeat(3,1fr); }
+      .contact-grid { grid-template-columns: 1fr 1.5fr; }
+      .footer-grid  { grid-template-columns: 1.6fr 1fr 1fr; }
+      .ft-bottom    { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+    @media (min-width: 1024px) {
+      .spec-grid { grid-template-columns: repeat(3,1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-brand">
+      <b>Dr. Márcio Costa Nogueira</b>
+      <small>CRM 18757 · Pneumologista</small>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#" class="cta open-modal">Agendar Consulta</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-drawer" id="drawer">
+  <ul>
+    <li><a href="#sobre"           class="ml">Sobre</a></li>
+    <li><a href="#especialidades"  class="ml">Especialidades</a></li>
+    <li><a href="#diferenciais"    class="ml">Diferenciais</a></li>
+    <li><a href="#depoimentos"     class="ml">Depoimentos</a></li>
+    <li><a href="#contato"         class="ml">Contato</a></li>
+    <li><a href="https://wa.me/5537999879405?text=Ol%C3%A1%20Dr.%20M%C3%A1rcio%2C%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="mcta">Agendar pelo WhatsApp</a></li>
+  </ul>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="inicio">
+
+  <!-- Rajadas de vento estilo cartoon -->
+  <div class="wind-layer" aria-hidden="true">
+
+    <!-- Rajada 1 — grande, 3 traços brancos -->
+    <div class="wind-gust g1">
+      <svg width="260" height="52" viewBox="0 0 260 52" fill="none">
+        <path d="M8,12 Q80,2 160,12 Q220,19 252,11"   stroke="rgba(255,255,255,0.55)" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M0,26 Q90,13 180,26 Q230,33 260,25"  stroke="rgba(255,255,255,0.35)" stroke-width="2"   stroke-linecap="round"/>
+        <path d="M18,40 Q85,32 170,40 Q220,46 248,39" stroke="rgba(255,255,255,0.20)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Rajada 2 — média, teal -->
+    <div class="wind-gust g2">
+      <svg width="180" height="40" viewBox="0 0 180 40" fill="none">
+        <path d="M6,10 Q60,2 120,10 Q155,15 174,9"   stroke="rgba(77,214,163,0.60)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M0,22 Q65,13 130,22 Q160,28 180,21" stroke="rgba(77,214,163,0.38)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M10,34 Q62,27 124,34 Q155,39 172,33" stroke="rgba(77,214,163,0.20)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Rajada 3 — pequena e rápida, branca -->
+    <div class="wind-gust g3">
+      <svg width="130" height="32" viewBox="0 0 130 32" fill="none">
+        <path d="M4,8  Q40,1  90,8  Q115,12 126,7"  stroke="rgba(255,255,255,0.50)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M0,18 Q45,10 95,18 Q118,23 130,17" stroke="rgba(255,255,255,0.28)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Rajada 4 — grande e lenta, teal -->
+    <div class="wind-gust g4">
+      <svg width="300" height="58" viewBox="0 0 300 58" fill="none">
+        <path d="M10,13 Q100,2  200,13 Q260,21 290,12"  stroke="rgba(77,214,163,0.50)" stroke-width="3"   stroke-linecap="round"/>
+        <path d="M0,29  Q110,16 220,29 Q268,37 300,28"  stroke="rgba(77,214,163,0.30)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M15,45 Q105,37 210,45 Q258,51 288,44"  stroke="rgba(77,214,163,0.15)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Rajada 5 — média, branca -->
+    <div class="wind-gust g5">
+      <svg width="200" height="44" viewBox="0 0 200 44" fill="none">
+        <path d="M6,11  Q70,2  140,11 Q175,17 194,10"  stroke="rgba(255,255,255,0.45)" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M0,24  Q75,14 150,24 Q180,30 200,23"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M10,37 Q72,30 144,37 Q176,42 196,36"  stroke="rgba(255,255,255,0.14)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Rajada 6 — pequena, teal, baixa -->
+    <div class="wind-gust g6">
+      <svg width="150" height="36" viewBox="0 0 150 36" fill="none">
+        <path d="M5,9  Q50,1  105,9  Q132,14 145,8"   stroke="rgba(77,214,163,0.55)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M0,21 Q55,12 110,21 Q136,27 150,20"  stroke="rgba(77,214,163,0.32)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="hero-body">
+
+    <div class="hero-badge fi">
+      <span class="pulse-dot"></span>
+      Médico Pneumologista · Divinópolis – MG
+    </div>
+
+    <h1 class="hero-impact fi d1">
+      Quem respira bem,<br><span class="accent">vive melhor.</span>
+    </h1>
+
+    <p class="hero-title fi d2">Dr. Márcio Costa Nogueira</p>
+    <p class="hero-crm fi d3">CRM 18757 &nbsp;·&nbsp; Médico Pneumologista · Divinópolis – MG</p>
+
+    <blockquote class="hero-quote fi d4">
+      Cuido da sua saúde respiratória com atenção, escuta e dedicação — do diagnóstico ao acompanhamento.
+    </blockquote>
+
+    <div class="hero-actions fi d5">
+      <a href="https://wa.me/5537999879405?text=Ol%C3%A1%20Dr.%20M%C3%A1rcio%2C%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn-wa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Agendar pelo WhatsApp
+      </a>
+      <div class="rating-pill">
+        <span class="rating-stars">★★★★★</span>
+        <span>4,8 no Google · 19 avaliações</span>
+      </div>
+    </div>
+  </div>
+
+  <svg class="hero-wave" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none">
+    <path d="M0,48 C360,96 1080,0 1440,48 L1440,80 L0,80 Z" fill="#FFFFFF"/>
+  </svg>
+</section>
+
+<!-- ══════════════ SOBRE ══════════════ -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="about-img-wrap fi">
+        <img
+          src="Fotos/Utilize_a_imagem_do_médico_202605061036.jpeg"
+          alt="Dr. Márcio Costa Nogueira — Médico Pneumologista"
+          class="about-photo"
+        />
+        <div class="about-badge">
+          <div class="about-badge-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.5 7.5H18.5L13.5 11.5L15.5 17.5L10 14L4.5 17.5L6.5 11.5L1.5 7.5H7.5L10 2Z" fill="#1B4F72"/>
+            </svg>
+          </div>
+          <div>
+            <b>Pneumologista</b>
+            <small>CRM 18757 · MG</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="eyebrow fi">Sobre o médico</span>
+        <h2 class="section-title fi d1">Dr. Márcio Costa Nogueira</h2>
+        <div class="divider fi d2"></div>
+        <p class="ph fi d2">[PLACEHOLDER_BIO — Insira aqui o texto de apresentação do Dr. Márcio: formação acadêmica, experiência profissional, motivação e filosofia de atendimento.]</p>
+        <p class="fi d3">Com consultório no coração de Divinópolis – MG, o Dr. Márcio atende com dedicação, escuta atenciosa e comprometimento com a saúde respiratória de cada paciente e sua família.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ESPECIALIDADES ══════════════ -->
+<section id="especialidades">
+  <div class="wrap">
+    <span class="eyebrow fi">Áreas de atuação</span>
+    <h2 class="section-title fi d1">Especialidades</h2>
+    <div class="divider fi d2"></div>
+    <p class="section-sub fi d2">Diagnóstico e tratamento das principais doenças respiratórias, com abordagem cuidadosa e individualizada para cada paciente.</p>
+
+    <div class="spec-grid">
+
+      <!-- Asma -->
+      <div class="spec-card fi">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <ellipse cx="9.5" cy="17" rx="4.5" ry="7" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <ellipse cx="18.5" cy="17" rx="4.5" ry="7" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <path d="M14 10V5" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M9.5 10C9.5 8.1 11.57 6.5 14 6.5C16.43 6.5 18.5 8.1 18.5 10" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+            <path d="M7 16.5C8 15.5 9.2 15 10.2 15.5" stroke="#1B4F72" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>Asma</h3>
+          <p>Diagnóstico e controle da asma brônquica, com foco na qualidade de vida e prevenção de crises.</p>
+        </div>
+      </div>
+
+      <!-- DPOC -->
+      <div class="spec-card fi d1">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <ellipse cx="9" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <ellipse cx="19" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <path d="M14 10V5" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M9 10C9 8.1 11.24 6.5 14 6.5C16.76 6.5 19 8.1 19 10" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+            <path d="M5 17H7.5M20.5 17H23" stroke="#1B4F72" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>DPOC</h3>
+          <p>Tratamento da Doença Pulmonar Obstrutiva Crônica, prevenindo a progressão e melhorando a respiração.</p>
+        </div>
+      </div>
+
+      <!-- Apneia -->
+      <div class="spec-card fi d2">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 22C18.42 22 22 18.42 22 14C22 9.58 18.42 6 14 6C11.6 6 9.44 7.05 7.94 8.75C8.7 9.04 9.25 9.77 9.25 10.65C9.25 11.76 8.35 12.67 7.23 12.67C6.85 12.67 6.5 12.56 6.21 12.37C6.07 12.74 6 13.13 6 13.5C6 17.64 9.13 22 13 22H14Z" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)" stroke-linejoin="round"/>
+            <path d="M17.5 10H21.5M18.5 13H22.5" stroke="#1B4F72" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10.5 18.5C11.7 19.8 12.8 20.4 14.8 20.4" stroke="#1B4F72" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>Apneia do Sono</h3>
+          <p>Investigação e tratamento dos distúrbios respiratórios do sono para garantir descanso de qualidade.</p>
+        </div>
+      </div>
+
+      <!-- Pneumonia -->
+      <div class="spec-card fi">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <ellipse cx="9" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <ellipse cx="19" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <path d="M14 10V5" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M9 10C9 8.1 11.24 6.5 14 6.5C16.76 6.5 19 8.1 19 10" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+            <circle cx="8" cy="15" r="2" fill="#1B4F72" opacity=".35"/>
+            <circle cx="6.5" cy="18.5" r="1.5" fill="#1B4F72" opacity=".25"/>
+            <circle cx="10.5" cy="20" r="1" fill="#1B4F72" opacity=".25"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>Pneumonia</h3>
+          <p>Diagnóstico preciso e tratamento eficaz das pneumonias, com acompanhamento completo da recuperação.</p>
+        </div>
+      </div>
+
+      <!-- Nódulos -->
+      <div class="spec-card fi d1">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <ellipse cx="9" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <ellipse cx="19" cy="17" rx="4.5" ry="6.5" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <path d="M14 10V5" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M9 10C9 8.1 11.24 6.5 14 6.5C16.76 6.5 19 8.1 19 10" stroke="#1B4F72" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+            <circle cx="20" cy="13.5" r="3.2" stroke="#1B4F72" stroke-width="1.5" fill="rgba(27,79,114,.16)"/>
+            <path d="M22.5 11L24 9.5M24 13.5H25.5M22.5 16L24 17.5" stroke="#1B4F72" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>Nódulos Pulmonares</h3>
+          <p>Avaliação e acompanhamento de nódulos pulmonares com protocolos atualizados de investigação.</p>
+        </div>
+      </div>
+
+      <!-- Tabagismo -->
+      <div class="spec-card fi d2">
+        <div class="spec-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="3" y="17" width="16" height="4" rx="2" stroke="#1B4F72" stroke-width="1.7" fill="rgba(27,79,114,.08)"/>
+            <rect x="20" y="17" width="4" height="4" rx="1.5" stroke="#1B4F72" stroke-width="1.4" fill="rgba(27,79,114,.14)"/>
+            <path d="M22 17C22 14.5 20 12.5 20 10C20 8 22 7 22 5" stroke="#1B4F72" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M5 6L23 22" stroke="#C0392B" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+          </svg>
+        </div>
+        <div class="spec-text">
+          <h3>Tabagismo</h3>
+          <p>Programa de cessação do tabagismo com suporte médico especializado para quem deseja parar de fumar.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DIFERENCIAIS ══════════════ -->
+<section id="diferenciais">
+  <div class="wrap">
+    <span class="eyebrow fi">Por que me escolher</span>
+    <h2 class="section-title fi d1">Meu compromisso com você</h2>
+    <div class="divider fi d2"></div>
+
+    <div class="dif-carousel-wrap">
+
+      <!-- Seta anterior -->
+      <button class="dif-arrow prev" id="difPrev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8l4-4" stroke="rgba(77,214,163,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="dif-grid" id="difGrid">
+
+        <div class="dif-card fi">
+          <div class="dif-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+              <path d="M16 4C9.37 4 4 9.37 4 16s5.37 12 12 12 12-5.37 12-12S22.63 4 16 4zm-1.5 17L9 15.5l1.77-1.77 3.73 3.72 7.73-7.72L24 11.5l-9.5 9.5z"/>
+            </svg>
+          </div>
+          <h3>Atendimento Humanizado</h3>
+          <p>Cada paciente é único. Ofereço um atendimento acolhedor, respeitoso e personalizado, com atenção e cuidado individuais.</p>
+        </div>
+
+        <div class="dif-card fi d1">
+          <div class="dif-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+              <path d="M16 4C9.37 4 4 9.37 4 16s5.37 12 12 12 12-5.37 12-12S22.63 4 16 4zm1 16.5h-2V13h2v7.5zm0-9.5h-2V9h2v2z"/>
+            </svg>
+          </div>
+          <h3>Escuta Atenciosa</h3>
+          <p>Dedico tempo para ouvir suas queixas, dúvidas e preocupações. Uma boa consulta começa com escuta presente e empática.</p>
+        </div>
+
+        <div class="dif-card fi d2">
+          <div class="dif-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+              <path d="M8 7h16v2H8V7zm0 4h16v2H8v-2zm0 4h10v2H8v-2zm0 8l4.5-4.5 3 3 4.5-5.5 5.5 7H8z"/>
+            </svg>
+          </div>
+          <h3>Explicações Claras e Detalhadas</h3>
+          <p>Explico diagnósticos e tratamentos de forma simples, para que você compreenda sua saúde e tome decisões com confiança.</p>
+        </div>
+
+      </div>
+
+      <!-- Seta próxima -->
+      <button class="dif-arrow next" id="difNext" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 4l4 4-4 4" stroke="rgba(77,214,163,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="dif-dots" id="difDots">
+        <div class="dif-dot active" data-i="0"></div>
+        <div class="dif-dot" data-i="1"></div>
+        <div class="dif-dot" data-i="2"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTADORES ══════════════ -->
+<section id="contadores" aria-label="Números que falam por si">
+
+  <div class="cnt-bubbles" aria-hidden="true"></div>
+
+  <span class="cnt-eyebrow">Números que falam por si</span>
+  <h2 class="cnt-title">Resultados construídos com tempo e dedicação</h2>
+
+  <div class="cnt-grid">
+
+    <!-- Pacientes -->
+    <div class="cnt-item">
+      <span class="cnt-number">
+        +<span class="cnt-val" data-target="5000" data-delay="0">0</span>
+      </span>
+      <p class="cnt-desc">Pacientes Atendidos</p>
+    </div>
+
+    <div class="cnt-divider" aria-hidden="true"></div>
+
+    <!-- Experiência -->
+    <div class="cnt-item">
+      <span class="cnt-number">
+        +<span class="cnt-val" data-target="15" data-delay="200">0</span>
+      </span>
+      <p class="cnt-desc">Anos de Experiência</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ DEPOIMENTOS ══════════════ -->
+<section id="depoimentos">
+  <div class="wrap">
+    <div class="test-header">
+      <span class="eyebrow fi">O que dizem os pacientes</span>
+      <h2 class="section-title fi d1">Depoimentos</h2>
+      <div class="divider fi d2"></div>
+    </div>
+
+    <div class="test-carousel-wrap">
+
+      <button class="test-arrow prev" id="testPrev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8l4-4" stroke="#1B4F72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="test-grid" id="testGrid">
+
+        <div class="test-card fi">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Médico muito educado, calmo e profissional. Escuta com atenção, explica cada detalhe. Nota 10!!!!"</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">M</div>
+            <div>
+              <div class="test-name">Marcius Dias</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fi d1">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Médico excelente, trata minha família agora, obrigado doutor"</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">A</div>
+            <div>
+              <div class="test-name">Agnaldo Rabelo</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fi d2">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Muito atencioso, ótimo atendimento. Recomendo 👏"</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">L</div>
+            <div>
+              <div class="test-name">Luciano Bueno</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fi">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Consulta muito tranquila, o Dr. Márcio explicou tudo com clareza. Saí bem mais tranquila com o diagnóstico."</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">F</div>
+            <div>
+              <div class="test-name">Fernanda Oliveira</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fi d1">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Profissional excepcional. Cuida dos meus pulmões há anos, sempre atualizado e muito cuidadoso. Confiança total."</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">R</div>
+            <div>
+              <div class="test-name">Roberto Carvalho</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card fi d2">
+          <div class="test-stars">★★★★★</div>
+          <blockquote class="test-quote">"Minha filha foi atendida com muito carinho. Médico paciente, didático e muito competente. Voltaremos sempre!"</blockquote>
+          <div class="test-author">
+            <div class="test-avatar">P</div>
+            <div>
+              <div class="test-name">Patrícia Mendes</div>
+              <div class="test-via">Avaliação no Google</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="test-arrow next" id="testNext" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 4l4 4-4 4" stroke="#1B4F72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="test-dots" id="testDots">
+        <div class="test-dot active" data-i="0"></div>
+        <div class="test-dot" data-i="1"></div>
+        <div class="test-dot" data-i="2"></div>
+        <div class="test-dot" data-i="3"></div>
+        <div class="test-dot" data-i="4"></div>
+        <div class="test-dot" data-i="5"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTATO ══════════════ -->
+<section id="contato">
+  <div class="wrap">
+    <span class="eyebrow fi">Localização e contato</span>
+    <h2 class="section-title fi d1">Agende sua Consulta</h2>
+    <div class="divider fi d2"></div>
+
+    <div class="contact-grid">
+
+      <div class="c-items fi">
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="#1B4F72">
+              <path d="M11 2C7.69 2 5 4.69 5 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S9.62 5.5 11 5.5s2.5 1.12 2.5 2.5S12.38 10.5 11 10.5z"/>
+            </svg>
+          </div>
+          <div class="c-label">
+            <strong>Endereço</strong>
+            <span>Rua Coronel João Notini, 632<br>Centro — Divinópolis, MG</span>
+          </div>
+        </div>
+
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="#1B4F72">
+              <path d="M6.6 9.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V19c0 .6-.4 1-1 1C10.6 20 2 11.4 2 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 9.8z"/>
+            </svg>
+          </div>
+          <div class="c-label">
+            <strong>Telefone fixo</strong>
+            <a href="tel:+553732132000">(37) 3213-2000</a>
+          </div>
+        </div>
+
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="#27AE60">
+              <path d="M11 1C5.48 1 1 5.48 1 11c0 1.67.45 3.23 1.22 4.58L1 21l5.55-1.2C7.86 20.55 9.4 21 11 21c5.52 0 10-4.48 10-10S16.52 1 11 1zm0 18c-1.5 0-2.93-.41-4.15-1.12l-.3-.17-3.08.72.73-2.99-.19-.31A7.96 7.96 0 013 11c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.38-5.97c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.45-1.36-1.69-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41H7.55c-.14 0-.37.05-.57.24-.19.19-.74.72-.74 1.75s.75 2.03.86 2.17c.1.14 1.48 2.26 3.59 3.17.5.22.9.35 1.2.44.51.16.97.14 1.33.08.41-.06 1.25-.51 1.43-1 .18-.49.18-.91.12-1-.06-.09-.21-.14-.45-.26z"/>
+            </svg>
+          </div>
+          <div class="c-label">
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/5537999879405?text=Ol%C3%A1%20Dr.%20M%C3%A1rcio%2C%20gostaria%20de%20agendar%20uma%20consulta." target="_blank">(37) 99987-9405</a>
+          </div>
+        </div>
+
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="2" width="18" height="18" rx="5" stroke="#1B4F72" stroke-width="1.7"/>
+              <circle cx="11" cy="11" r="3.5" stroke="#1B4F72" stroke-width="1.7"/>
+              <circle cx="16.2" cy="5.8" r="1.1" fill="#1B4F72"/>
+            </svg>
+          </div>
+          <div class="c-label">
+            <strong>Instagram</strong>
+            <a href="https://instagram.com/dr.marciocnogueira" target="_blank">@dr.marciocnogueira</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="map-frame fi d1">
+        <iframe
+          src="https://maps.google.com/maps?q=Rua+Coronel+Jo%C3%A3o+Notini%2C+632%2C+Centro%2C+Divin%C3%B3polis%2C+MG&output=embed&hl=pt-BR"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização — Dr. Márcio Costa Nogueira">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div>
+        <div class="ft-brand-name">Dr. Márcio Costa Nogueira</div>
+        <div class="ft-crm">CRM 18757 · Médico Pneumologista</div>
+        <p class="ft-tagline">Cuidando da saúde respiratória dos moradores de Divinópolis e região com dedicação e humanidade.</p>
+        <div class="ft-social">
+          <a href="https://instagram.com/dr.marciocnogueira" target="_blank" class="ft-soc" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="1.5" y="1.5" width="15" height="15" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="13" cy="5" r=".9" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/5537999879405?text=Ol%C3%A1%20Dr.%20M%C3%A1rcio%2C%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="ft-soc" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="ft-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="ft-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="tel:+553732132000">(37) 3213-2000</a></li>
+          <li><a href="https://wa.me/5537999879405" target="_blank">(37) 99987-9405</a></li>
+          <li><a href="https://instagram.com/dr.marciocnogueira" target="_blank">@dr.marciocnogueira</a></li>
+          <li><a href="#contato" style="line-height:1.5">Rua Cel. João Notini, 632<br>Centro — Divinópolis/MG</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="ft-bottom">
+      <p>© 2025 Dr. Márcio Costa Nogueira · CRM 18757</p>
+      <p>Médico Pneumologista · Divinópolis – MG</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ FLOATING WHATSAPP ══════════════ -->
+<a href="#" class="wa-float open-modal" aria-label="Agendar pelo WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-label">Agendar Consulta</span>
+</a>
+
+<!-- ══════════════ MODAL AGENDAMENTO ══════════════ -->
+<div id="modal-agendamento" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Fechar">&times;</button>
+    <div class="modal-header">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="#27AE60" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <div>
+        <h2 id="modal-title">Agendar Consulta</h2>
+        <p>Preencha rapidinho e entraremos em contato!</p>
+      </div>
+    </div>
+    <form id="form-agendamento" novalidate>
+      <div class="modal-field">
+        <label for="m-nome">Nome completo</label>
+        <input id="m-nome" type="text" placeholder="Seu nome" autocomplete="name" required />
+      </div>
+      <div class="modal-field">
+        <label for="m-idade">Idade</label>
+        <input id="m-idade" type="number" min="1" max="120" placeholder="Ex: 35" required />
+      </div>
+      <div class="modal-field">
+        <label for="m-sintomas">O que está sentindo? <span>(em poucas palavras)</span></label>
+        <textarea id="m-sintomas" rows="3" placeholder="Ex: tosse persistente há 2 semanas..." required></textarea>
+      </div>
+      <button type="submit" class="modal-submit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Enviar pelo WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
+<script>
+  /* ── Navbar lift on scroll ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('lifted', scrollY > 20), { passive: true });
+
+  /* ── Hamburger ── */
+  const ham    = document.getElementById('ham');
+  const drawer = document.getElementById('drawer');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  document.querySelectorAll('.ml, .mcta').forEach(a =>
+    a.addEventListener('click', () => { ham.classList.remove('open'); drawer.classList.remove('open'); })
+  );
+
+  /* ── Intersection Observer fade-in ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+  /* ── Hero immediate reveal ── */
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#inicio .fi').forEach((el, i) =>
+      setTimeout(() => el.classList.add('on'), i * 140)
+    );
+  });
+
+  /* ── Bolinhas subindo nos contadores ── */
+  (function() {
+    const wrap = document.querySelector('.cnt-bubbles');
+    if (!wrap) return;
+    const cfg = [
+      { size:  8, left:  '5%', dur: 10, delay: 0   },
+      { size: 14, left: '14%', dur: 13, delay: 3   },
+      { size:  6, left: '24%', dur:  9, delay: 6   },
+      { size: 12, left: '34%', dur: 12, delay: 1   },
+      { size:  7, left: '44%', dur: 11, delay: 8   },
+      { size: 16, left: '54%', dur: 14, delay: 2.5 },
+      { size:  9, left: '64%', dur: 10, delay: 5   },
+      { size:  6, left: '73%', dur:  9, delay: 7.5 },
+      { size: 13, left: '83%', dur: 12, delay: 1.5 },
+      { size:  8, left: '93%', dur: 11, delay: 4   },
+    ];
+    cfg.forEach(({ size, left, dur, delay }) => {
+      const b = document.createElement('div');
+      b.className = 'cnt-bubble';
+      b.style.cssText =
+        `width:${size}px;height:${size}px;left:${left};` +
+        `animation-duration:${dur}s;animation-delay:${delay}s;`;
+      wrap.appendChild(b);
+    });
+  })();
+
+  /* ── Contadores animados ── */
+  (function() {
+    const vals = document.querySelectorAll('.cnt-val');
+    if (!vals.length) return;
+
+    /* easing suave: ease-in-out quadrático */
+    function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+    function animateCount(el) {
+      const target = +el.dataset.target;
+      const delay  = +el.dataset.delay || 0;
+      const dur    = 2000;
+      let start    = null;
+
+      setTimeout(() => {
+        function step(ts) {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / dur, 1);
+          const val = Math.round(ease(progress) * target);
+          el.textContent = target >= 1000
+            ? val.toLocaleString('pt-BR')
+            : val;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target >= 1000
+              ? target.toLocaleString('pt-BR')
+              : target;
+          }
+        }
+        requestAnimationFrame(step);
+      }, delay);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          vals.forEach(animateCount);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const section = document.getElementById('contadores');
+    if (section) observer.observe(section);
+  })();
+
+  /* ── Carrossel Depoimentos ── */
+  (function() {
+    const grid  = document.getElementById('testGrid');
+    const prev  = document.getElementById('testPrev');
+    const next  = document.getElementById('testNext');
+    const dots  = document.querySelectorAll('.test-dot');
+    if (!grid) return;
+
+    let current = 0;
+    const cards = grid.querySelectorAll('.test-card');
+    const total = cards.length;
+
+    function scrollTo(idx) {
+      current = ((idx % total) + total) % total;
+      grid.scrollTo({ left: cards[current].offsetLeft - grid.offsetLeft - 16, behavior: 'smooth' });
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    next.addEventListener('click', () => scrollTo(current + 1));
+    prev.addEventListener('click', () => scrollTo(current - 1));
+    dots.forEach(d => d.addEventListener('click', () => scrollTo(+d.dataset.i)));
+
+    grid.addEventListener('scroll', () => {
+      let closest = 0, minDist = Infinity;
+      cards.forEach((c, i) => {
+        const dist = Math.abs(c.offsetLeft - grid.offsetLeft - grid.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }, { passive: true });
+
+    function checkBP() {
+      const mobile = window.innerWidth < 768;
+      prev.style.display = mobile ? '' : 'none';
+      next.style.display = mobile ? '' : 'none';
+    }
+    checkBP();
+    window.addEventListener('resize', checkBP);
+  })();
+
+  /* ── Carrossel Diferenciais ── */
+  (function() {
+    const grid  = document.getElementById('difGrid');
+    const prev  = document.getElementById('difPrev');
+    const next  = document.getElementById('difNext');
+    const dots  = document.querySelectorAll('.dif-dot');
+    if (!grid) return;
+
+    let current = 0;
+    const cards = grid.querySelectorAll('.dif-card');
+    const total = cards.length;
+
+    function scrollTo(idx) {
+      current = ((idx % total) + total) % total;  /* loop infinito */
+      const card = cards[current];
+      grid.scrollTo({ left: card.offsetLeft - grid.offsetLeft - 16, behavior: 'smooth' });
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    next.addEventListener('click', () => scrollTo(current + 1));
+    prev.addEventListener('click', () => scrollTo(current - 1));
+    dots.forEach(d => d.addEventListener('click', () => scrollTo(+d.dataset.i)));
+
+    /* Sync dots on manual swipe */
+    grid.addEventListener('scroll', () => {
+      let closest = 0, minDist = Infinity;
+      cards.forEach((c, i) => {
+        const dist = Math.abs(c.offsetLeft - grid.offsetLeft - grid.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }, { passive: true });
+
+    /* Esconde setas no desktop */
+    function checkBP() {
+      const mobile = window.innerWidth < 768;
+      prev.style.display = mobile ? '' : 'none';
+      next.style.display = mobile ? '' : 'none';
+    }
+    checkBP();
+    window.addEventListener('resize', checkBP);
+  })();
+
+  /* ── Modal Agendamento ── */
+  (function() {
+    const modal  = document.getElementById('modal-agendamento');
+    const form   = document.getElementById('form-agendamento');
+    const fNome  = document.getElementById('m-nome');
+    const fIdade = document.getElementById('m-idade');
+    const fSint  = document.getElementById('m-sintomas');
+
+    function openModal(e) {
+      e.preventDefault();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => fNome.focus(), 100);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Todos os botões que abrem o modal
+    document.querySelectorAll('.open-modal').forEach(el =>
+      el.addEventListener('click', openModal)
+    );
+
+    // Fechar ao clicar no X
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+
+    // Fechar ao clicar fora da caixa
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    // Fechar com Esc
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Enviar formulário
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let ok = true;
+
+      [fNome, fIdade, fSint].forEach(f => {
+        f.classList.remove('err');
+        if (!f.value.trim()) { f.classList.add('err'); ok = false; }
+      });
+
+      if (!ok) return;
+
+      const msg = `Olá Dr. Márcio! Gostaria de agendar uma consulta.
+
+📋 *Nome:* ${fNome.value.trim()}
+🎂 *Idade:* ${fIdade.value.trim()} anos
+🩺 *O que estou sentindo:* ${fSint.value.trim()}`;
+
+      const url = `https://wa.me/5537999879405?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      closeModal();
+      form.reset();
+    });
+  })();
+</script>
+
+</body>
+</html>
